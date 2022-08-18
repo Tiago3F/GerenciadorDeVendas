@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package fullcycle;
+
+option go_package = "/pb";
+
+message ItemEntity {
+    string Id = 1;
+    string descricao = 2;
+    string sn = 3;
+    string mac = 4;
+    string imei = 5;
+    string localidade_id = 6;
+}
+
+message Empty {}
+
+
+service Item {
+    rpc GetItems(Empty) returns (stream ItemEntity);
+}

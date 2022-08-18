@@ -1,0 +1,79 @@
+definitions:
+  entity.Perfil:
+    properties:
+      id:
+        type: integer
+      nome:
+        type: string
+    type: object
+host: localhost:3333
+info:
+  contact: {}
+  description: Api de gerenciamento de vendas
+  title: Gerenciador de vendas
+paths:
+  /perfil:
+    patch:
+      consumes:
+      - application/json
+      description: Atualiza um perfil descrição
+      parameters:
+      - description: payload
+        format: entity.Perfil
+        in: body
+        name: perfil
+        required: true
+        schema:
+          $ref: '#/definitions/entity.Perfil'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/entity.Perfil'
+            type: array
+        "400":
+          description: Bad Request
+          schema: {}
+        "404":
+          description: Not Found
+          schema: {}
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Atualiza um perfil
+      tags:
+      - perfil
+    post:
+      consumes:
+      - application/json
+      description: cria um perfil descrição
+      parameters:
+      - description: payload
+        format: entity.Perfil
+        in: body
+        name: perfil
+        required: true
+        schema:
+          $ref: '#/definitions/entity.Perfil'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            items:
+              $ref: '#/definitions/entity.Perfil'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Cria um perfil
+      tags:
+      - perfil
+securityDefinitions:
+  BasicAuth:
+    type: basic
+swagger: "2.0"
